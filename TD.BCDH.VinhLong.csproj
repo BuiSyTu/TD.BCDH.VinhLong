@@ -1,0 +1,171 @@
+﻿<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D249F1F-4127-4037-9660-633113FA41F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TD.BCDH.VinhLong</RootNamespace>
+    <AssemblyName>TD.BCDH.VinhLong</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SharePoint.IdentityModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TD.BCDH\libs\Microsoft.SharePoint.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+    <Reference Include="TD.Core.Api.Mvc">
+      <HintPath>..\..\..\..\inetpub\wwwroot\wss\VirtualDirectories\8000\bin\TD.Core.Api.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Classic, Version=7.0.0.0, Culture=neutral, PublicKeyToken=afc61983f100d280, processorArchitecture=MSIL">
+      <HintPath>packages\Z.EntityFramework.Classic.Community.7.1.0\lib\net45\Z.EntityFramework.Classic.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Classic.SqlServer, Version=7.0.0.0, Culture=neutral, PublicKeyToken=afc61983f100d280, processorArchitecture=MSIL">
+      <HintPath>packages\Z.EntityFramework.Classic.Community.7.1.0\lib\net45\Z.EntityFramework.Classic.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Extensions.Classic, Version=3.17.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>packages\Z.EntityFramework.Extensions.Classic.3.17.1\lib\net45\Z.EntityFramework.Extensions.Classic.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.Expressions.Eval, Version=2.9.20.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>packages\Z.Expressions.Eval.2.9.20\lib\net45\Z.Expressions.Eval.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIResults\APIResult.cs" />
+    <Compile Include="APIResults\Error.cs" />
+    <Compile Include="APIResults\ListCreatedResult.cs" />
+    <Compile Include="Data\BCDHContext.cs" />
+    <Compile Include="IBCDHVinhLongService.cs" />
+    <Compile Include="ISAPI\TD.BCDH.VinhLong\BCDHVinhLongService.svc.cs">
+      <DependentUpon>BCDHVinhLongService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010070756125_addmigration.cs" />
+    <Compile Include="Migrations\202010070756125_addmigration.Designer.cs">
+      <DependentUpon>202010070756125_addmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CapHoc.cs" />
+    <Compile Include="Models\ChucVu.cs" />
+    <Compile Include="Models\DanToc.cs" />
+    <Compile Include="Models\DonVi.cs" />
+    <Compile Include="Models\DonViGiaoDuc.cs" />
+    <Compile Include="Models\GiaoVien.cs" />
+    <Compile Include="Models\GioiTinh.cs" />
+    <Compile Include="Models\HocSinh.cs" />
+    <Compile Include="Models\HoSo.cs" />
+    <Compile Include="Models\KhoiHoc.cs" />
+    <Compile Include="Models\LinhVuc.cs" />
+    <Compile Include="Models\LopHoc.cs" />
+    <Compile Include="Models\PhongHoc.cs" />
+    <Compile Include="Models\PhuongXa.cs" />
+    <Compile Include="Models\QuanHuyen.cs" />
+    <Compile Include="Models\ThuTucHanhChinh.cs" />
+    <Compile Include="Models\TinhThanh.cs" />
+    <Compile Include="Models\TonGiao.cs" />
+    <Compile Include="Models\TruongHoc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BCDHService.CapHoc.cs" />
+    <Compile Include="Services\BCDHService.ChucVu.cs" />
+    <Compile Include="Services\BCDHService.DanToc.cs" />
+    <Compile Include="Services\BCDHService.DonVi.cs" />
+    <Compile Include="Services\BCDHService.DonViGiaoDuc.cs" />
+    <Compile Include="Services\BCDHService.GiaoVien.cs" />
+    <Compile Include="Services\BCDHService.GioiTinh.cs" />
+    <Compile Include="Services\BCDHService.HocSinh.cs" />
+    <Compile Include="Services\BCDHService.HoSo.cs" />
+    <Compile Include="Services\BCDHService.KhoiHoc.cs" />
+    <Compile Include="Services\BCDHService.LinhVuc.cs" />
+    <Compile Include="Services\BCDHService.LopHoc.cs" />
+    <Compile Include="Services\BCDHService.PhongHoc.cs" />
+    <Compile Include="Services\BCDHService.PhuongXa.cs" />
+    <Compile Include="Services\BCDHService.QuanHuyen.cs" />
+    <Compile Include="Services\BCDHService.ThuTucHanhChinh.cs" />
+    <Compile Include="Services\BCDHService.TinhThanh.cs" />
+    <Compile Include="Services\BCDHService.TonGiao.cs" />
+    <Compile Include="Services\BCDHService.TruongHoc.cs" />
+    <Compile Include="ViewModels\BieuDo.cs" />
+    <Compile Include="ViewModels\ChartInput.cs" />
+    <Compile Include="ViewModels\ChartInputByMonth.cs" />
+    <Compile Include="ViewModels\ChartOutput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{92bce673-3cde-4359-a60b-070e36d434e5}</SharePointProjectItemId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+    <None Include="Package\Package.package">
+      <PackageId>{8fd573eb-928c-4890-9255-633b91834cc1}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010070756125_addmigration.resx">
+      <DependentUpon>202010070756125_addmigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ISAPI\TD.BCDH.VinhLong\BCDHVinhLongService.svc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>
